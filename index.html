@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetHere - Social Platform</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Сначала подключаем основной скрипт -->
+    <script src="/static/main.js" type="module"></script>
+    <!-- Затем подключаем роутер -->
+    <script src="/static/router.js" type="module"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="/static/icon/logo.jpeg" alt="MeetHere Logo" class="logo">
+                <h1 class="site-name">MeetHere</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="/services" class="nav-link">Services</a>
+                <a href="/our-work" class="nav-link">Our work</a>
+                <a href="/our-team" class="nav-link">Our team</a>
+                <a href="/price-list" class="nav-link">Price list</a>
+                <a href="/contact" class="nav-link">Contact</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Контент будет загружен через роутер -->
+            <!-- Изначально здесь будет домашняя страница -->
+        </main>
+
+        <button class="mobile-menu-toggle">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Инициализация приложения -->
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Экспортировать router в глобальную область видимости для доступа из main.js
+            import('/static/router.js')
+                .then(module => {
+                    window.router = module.default;
+                    console.log('Router initialized');
+                })
+                .catch(error => {
+                    console.error('Error loading router:', error);
+                });
+        });
+    </script>
+</body>
+</html>
